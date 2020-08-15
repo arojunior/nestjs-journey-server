@@ -1,0 +1,33 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type EventModel {
+  analysis_type: String!
+  end: DateTime!
+  id: String!
+  latitude: Float!
+  longitude: Float!
+  moments: MomentModel!
+  start: DateTime!
+  type: String!
+}
+
+type MomentModel {
+  analysis_type: String!
+  end: DateTime!
+  event: EventModel!
+  id: String!
+  moment_definition_id: String!
+  start: DateTime!
+}
+
+type Query {
+  events: [EventModel!]!
+  moments: [MomentModel!]!
+}
