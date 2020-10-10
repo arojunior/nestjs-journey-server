@@ -3,8 +3,8 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { EventModule } from './modules/event/event.module';
-import { MomentModule } from './modules/moment/moment.module';
+import { EventModule } from '../event/event.module';
+import { MomentModule } from '../moment/moment.module';
 
 @Module({
   imports: [
