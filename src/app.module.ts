@@ -1,4 +1,3 @@
-import{ join } from 'path';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -13,8 +12,8 @@ import { MomentModule } from './modules/moment/moment.module';
     MomentModule,
     
     GraphQLModule.forRoot({
-      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
-      sortSchema: true,
+      autoSchemaFile: true,
+      playground: true,
     }),
 
     TypeOrmModule.forRoot({
@@ -25,7 +24,7 @@ import { MomentModule } from './modules/moment/moment.module';
       password: 'admin',
       database: 'journeys',
       entities: ['dist/**/*.model.js'],
-      synchronize: false,
+      synchronize: true,
     }),
   ],
   controllers: [AppController],

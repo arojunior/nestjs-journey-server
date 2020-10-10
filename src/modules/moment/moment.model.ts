@@ -1,6 +1,13 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 import { ObjectType, Field } from '@nestjs/graphql';
-import { EventModel } from '../event/event.model';
+
+@ObjectType()
+class MomentHistory {
+  @Field() start: Date;
+  @Field() end: Date;
+  @Field() analysis_type: string;
+  @Field() moment_definition_id: string;
+};
 
 @ObjectType()
 @Entity({ name: 'moment' })
@@ -9,26 +16,7 @@ export class MomentModel {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Field(type => EventModel)
-  @ManyToOne(
-    type => EventModel,
-    event => event.moments,
-  )
-  event: EventModel;
-
   @Field()
-  @Column()
-  start: Date;
-
-  @Field()
-  @Column()
-  end: Date;
-
-  @Field()
-  @Column({ type: 'text' })
-  analysis_type: string;
-
-  @Field()
-  @Column({ type: 'text' })
-  moment_definition_id: string;
+  @Column({ type: 'jsonb' })
+  data: MomentHistory;
 }
