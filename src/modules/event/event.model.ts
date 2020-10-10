@@ -7,14 +7,33 @@ class Location {
 }
 
 @ObjectType()
+class Trajectory {
+  @Field() type: string;
+  @Field() encoded: string;
+}
+
+@ObjectType()
+class Waypoint {
+  @Field() type: string;
+  @Field() accuracy: number;
+  @Field() latitude: number;
+  @Field() longitude: number;
+  @Field() timestamp: Date;
+}
+
+@ObjectType()
 class EventHistory {
   @Field() type: string;
   @Field() start: Date;
   @Field() end: Date;
   @Field() analysis_type: string;
-  @Field() latitude: number;
-  @Field() longitude: number;
-  @Field() location: Location;
+  @Field() mode?: string;
+  @Field() distance?: number;
+  @Field() latitude?: number;
+  @Field() longitude?: number;
+  @Field() location?: Location;
+  @Field(() => [Waypoint]) waypoints?: Waypoint[];
+  @Field() trajectory?: Trajectory | null;
 }
 
 @ObjectType()
