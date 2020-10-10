@@ -18,14 +18,14 @@ class Waypoint {
   @Field() accuracy: number;
   @Field() latitude: number;
   @Field() longitude: number;
-  @Field() timestamp: Date;
+  @Field() timestamp: string;
 }
 
 @ObjectType()
 class EventHistory {
   @Field() type: string;
-  @Field() start: Date;
-  @Field() end: Date;
+  @Field() start: string;
+  @Field() end: string;
   @Field() analysis_type: string;
   @Field() mode?: string;
   @Field() distance?: number;
