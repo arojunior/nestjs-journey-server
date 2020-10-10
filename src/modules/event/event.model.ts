@@ -27,13 +27,13 @@ class EventHistory {
   @Field() start: string;
   @Field() end: string;
   @Field() analysis_type: string;
-  @Field() mode?: string;
-  @Field() distance?: number;
-  @Field() latitude?: number;
-  @Field() longitude?: number;
-  @Field() location?: Location;
-  @Field(() => [Waypoint]) waypoints?: Waypoint[];
-  @Field() trajectory?: Trajectory | null;
+  @Field({ nullable: true }) mode?: string;
+  @Field({ nullable: true }) distance?: number;
+  @Field({ nullable: true }) latitude?: number;
+  @Field({ nullable: true }) longitude?: number;
+  @Field({ nullable: true }) location?: Location;
+  @Field(() => [Waypoint], { nullable: true }) waypoints?: Waypoint[];
+  @Field({ nullable: true }) trajectory?: Trajectory | null;
 }
 
 @ObjectType()
