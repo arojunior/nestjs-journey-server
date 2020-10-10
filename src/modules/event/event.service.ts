@@ -10,6 +10,10 @@ export class EventService {
     private eventRepository: Repository<EventModel>,
   ) {}
 
+  findById(id: string): Promise<EventModel> {
+    return this.eventRepository.findOne(id);
+  }
+
   findAll(): Promise<EventModel[]> {
     return this.eventRepository.find();
   }
